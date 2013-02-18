@@ -19,7 +19,7 @@ Control::Control(ofxMtlBox2dWorld* world, ofxMtlBox2dBaseShape* body, const ofPo
     m_body->setup(world, pos.x, pos.y, kControlRadius, 0, true);
 
     m_joint = new ofxMtlBox2dDistanceJoint();
-    m_joint->setPhysics(4.0, 0.5);
+    m_joint->setPhysics(1.0f, 0.5f);
     m_joint->setup(world, body, m_body, anchor, pos);
 
     moverID = -1;
