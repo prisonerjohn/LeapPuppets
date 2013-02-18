@@ -145,8 +145,8 @@ Ragdoll::Ragdoll(ofxMtlBox2dWorld *world, int x, int y)
     // build the controls
     leftArmControl = new Control(world, lowerArmLeft, ofPoint(-114.0f, -280.0f), lowerArmLeft->getPosition() - ofPoint(lowerArmLeft->getWidth() / 2, 0));
     rightArmControl = new Control(world, lowerArmRight, ofPoint(114.0f, -280.0f), lowerArmRight->getPosition() + ofPoint(lowerArmRight->getWidth() / 2, 0));
-    leftLegControl = new Control(world, upperLegLeft, ofPoint(-60.0f, -360.0f), upperLegLeft->getPosition() + ofPoint(0, upperLegLeft->getHeight() / 2));
-    rightLegControl = new Control(world, upperLegRight, ofPoint(60.0f, -360.0f), upperLegRight->getPosition() + ofPoint(0, upperLegRight->getHeight() / 2));
+    leftLegControl = new Control(world, lowerLegLeft, ofPoint(-100.0f, -420.0f), lowerLegLeft->getPosition() + ofPoint(0, lowerLegLeft->getHeight() / 2));
+    rightLegControl = new Control(world, lowerLegRight, ofPoint(100.0f, -420.0f), lowerLegRight->getPosition() + ofPoint(0, lowerLegRight->getHeight() / 2));
     headControl = new Control(world, head, ofPoint(0, -200.0f), head->getPosition());
 }
 
