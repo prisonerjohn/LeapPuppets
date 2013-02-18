@@ -29,10 +29,8 @@ class testApp : public ofBaseApp
         bool bDebug;
         bool bInfo;
 
-        int minX, maxX, minY, maxY;
-
         ofxLeapMotion leap;
-        vector <ofxLeapMotionSimpleHand> simpleHands;
+        vector<ofxLeapMotionSimpleHand> simpleHands;
         
         ofxMtlBox2dWorld* world;
 

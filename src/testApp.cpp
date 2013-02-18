@@ -11,48 +11,15 @@ void testApp::setup()
     bDebug = true;
     bInfo = true;
 
-//    minX = minY = std::numeric_limits<int>::max();
-//    maxX = maxY = std::numeric_limits<int>::min();
-    minX = -200;
-    maxX =  200;
-    minY =   30;
-    maxY =  400;
-
     leap.open();
 
     // init the physics world
     world = new ofxMtlBox2dWorld();
-    world->enableMouseJoints();
+//    world->enableMouseJoints();
     world->setGravityB2(b2Vec2(0, 9.8));
 
     buildTerrain();
     buildRagdoll();
-
-//    
-//	// first we add just a few circles
-//	for (int i = 0; i < 8; i++) {
-//		ofxBox2dCircle circle;
-//		circle.setPhysics(3.0, 0.53, 0.1);
-//		circle.setup(box2d.getWorld(), ofGetWidth()/2, 100+(i*20), 20);
-//		circles.push_back(circle);
-//	}
-//	
-//	// now connect each circle with a joint
-//	for (int i=1; i<circles.size(); i++) {
-//		
-//		ofxBox2dJoint joint;
-//		
-//		// if this is the first point connect to the top anchor.
-//		if(i == 0) {
-////			joint.setup(box2d.getWorld(), anchor.body, circles[i].body);		
-//		}
-//		else {
-//			joint.setup(box2d.getWorld(), circles[i-1].body, circles[i].body);
-//		}
-//		
-//		joint.setLength(25);
-//		joints.push_back(joint);
-//	}
 }
 
 //--------------------------------------------------------------
@@ -62,14 +29,6 @@ void testApp::update()
 
     simpleHands = leap.getSimpleHands();
     if (leap.isFrameNew() && simpleHands.size()) {
-//        leap.setMappingX(-230, 230, 0, 7);
-//		leap.setMappingY(90, 490, -1, 1);
-//        leap.setMappingZ(-150, 150, -200, 200);
-
-//        leap.setMappingX(-200, 200, -ofGetWidth()/2, ofGetWidth()/2);
-//		leap.setMappingY(30, 400, -ofGetHeight()/2, ofGetHeight()/2);
-//        leap.setMappingZ(-150, 150, -200, 200);
-
         for (int i = 0; i < simpleHands.size(); i++) {
             int numFingers = simpleHands[i].fingers.size();
             if (numFingers) {
@@ -169,6 +128,7 @@ void testApp::draw() {
     }
     else {
         if (terrain) terrain->draw();
+        if (ragdoll) ragdoll->draw();
     }
 
     if (bInfo) {
@@ -218,7 +178,7 @@ void testApp::keyReleased(int key)
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y )
+void testApp::mouseMoved(int x, int y)
 {
 	
 }
@@ -226,27 +186,18 @@ void testApp::mouseMoved(int x, int y )
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button)
 {
-//    drawing.addVertex(x, y);
+
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button)
 {
-//    buildTerrain();
+
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button)
 {
-//    drawing.setClosed(false);
-//	drawing.simplify();
-//
-//	polyLine.addVertexes(drawing);
-//	polyLine.simplify();
-//	polyLine.setPhysics(0.0, 0.5, 0.5);
-//	polyLine.create(box2d.getWorld());
-//
-//	drawing.clear();
 
 }
 
