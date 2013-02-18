@@ -94,8 +94,9 @@ void testApp::update()
                     // move the ragdoll controls
 
                     // the first point is the left arm
-                    int leftArmID = simpleHands[i].fingers[0].id;
-                    ofPoint leftArmPos(simpleHands[i].fingers[0].pos.x, simpleHands[i].fingers[0].pos.y * -1);
+                    int leftArmIndex = orderedIndices.front();
+                    int leftArmID = simpleHands[i].fingers[leftArmIndex].id;
+                    ofPoint leftArmPos(simpleHands[i].fingers[leftArmIndex].pos.x, simpleHands[i].fingers[leftArmIndex].pos.y * -1);
                     if (ragdoll->leftArmControl->moverID != leftArmID)
                         ragdoll->leftArmControl->grab(leftArmID, leftArmPos);
                     else {
@@ -104,8 +105,9 @@ void testApp::update()
 
                     // the last point is the right arm
                     if (numFingers > 1) {
-                        int rightArmID = simpleHands[i].fingers[numFingers - 1].id;
-                        ofPoint rightArmPos(simpleHands[i].fingers[numFingers - 1].pos.x, simpleHands[i].fingers[numFingers - 1].pos.y * -1);
+                        int rightArmIndex = orderedIndices.back();
+                        int rightArmID = simpleHands[i].fingers[rightArmIndex].id;
+                        ofPoint rightArmPos(simpleHands[i].fingers[rightArmIndex].pos.x, simpleHands[i].fingers[rightArmIndex].pos.y * -1);
                         if (ragdoll->rightArmControl->moverID != rightArmID)
                             ragdoll->rightArmControl->grab(rightArmID, rightArmPos);
                         else {
@@ -115,8 +117,9 @@ void testApp::update()
 
                     // the second point is the left leg
                     if (numFingers > 2) {
-                        int leftLegID = simpleHands[i].fingers[1].id;
-                        ofPoint leftLegPos(simpleHands[i].fingers[1].pos.x, simpleHands[i].fingers[1].pos.y * -1);
+                        int leftLegIndex = *(++orderedIndices.begin());
+                        int leftLegID = simpleHands[i].fingers[leftLegIndex].id;
+                        ofPoint leftLegPos(simpleHands[i].fingers[leftLegIndex].pos.x, simpleHands[i].fingers[leftLegIndex].pos.y * -1);
                         if (ragdoll->leftLegControl->moverID != leftLegID)
                             ragdoll->leftLegControl->grab(leftLegID, leftLegPos);
                         else {
@@ -126,8 +129,9 @@ void testApp::update()
 
                     // the second to last point is the right leg
                     if (numFingers > 3) {
-                        int rightLegID = simpleHands[i].fingers[numFingers - 2].id;
-                        ofPoint rightLegPos(simpleHands[i].fingers[numFingers - 2].pos.x, simpleHands[i].fingers[numFingers - 2].pos.y * -1);
+                        int rightLegIndex = *(++orderedIndices.rbegin());
+                        int rightLegID = simpleHands[i].fingers[rightLegIndex].id;
+                        ofPoint rightLegPos(simpleHands[i].fingers[rightLegIndex].pos.x, simpleHands[i].fingers[rightLegIndex].pos.y * -1);
                         if (ragdoll->rightLegControl->moverID != rightLegID)
                             ragdoll->rightLegControl->grab(rightLegID, rightLegPos);
                         else {
@@ -137,8 +141,9 @@ void testApp::update()
 
                     // the middle point is the head, but only if all limbs are connected
                     if (numFingers > 4) {
-                        int headID = simpleHands[i].fingers[2].id;
-                        ofPoint headPos(simpleHands[i].fingers[2].pos.x, simpleHands[i].fingers[2].pos.y * -1);
+                        int headIndex = *(++(++orderedIndices.begin()));
+                        int headID = simpleHands[i].fingers[headIndex].id;
+                        ofPoint headPos(simpleHands[i].fingers[headIndex].pos.x, simpleHands[i].fingers[headIndex].pos.y * -1);
                         if (ragdoll->headControl->moverID != headID)
                             ragdoll->headControl->grab(headID, headPos);
                         else {
